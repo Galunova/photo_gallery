@@ -3,9 +3,9 @@
     <h1><%= @photo.title %></h1>
     <%= image_tag @photo.image_url(:full) %>
     <% if @photo.comments.first %>
-      <p>Average score: <%= @photo.average_score %></p>
+        <p>Average score: <%= @photo.average_score %></p>
     <% else %>
-      <p>There are no rates for this photo </p>
+        <p>There are no rates for this photo </p>
     <% end %>
 
     <div class="col-md-6 ">
@@ -13,14 +13,14 @@
         <div >
           <h3>Add comment</h3>
           <%= simple_form_for [@photo, @photo.comments.build] do |f| %>
-            <%= f.input :text, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{@photo.id}" %>
-            <%= f.input :rate, collection: 1..5 %>
-            <%= f.submit %>
+              <%= f.input :text, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{@photo.id}" %>
+              <%= f.input :rate, collection: 1..5 %>
+              <%= f.submit %>
           <% end %>
         </div>
       <% end %>
       <h3>Comments: </h3>
       <%= render @comments, photo: @photo %>
-    </div>
+      </div>
   </div>
 </div>
