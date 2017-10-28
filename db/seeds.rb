@@ -7,3 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 admin = User.create!(email: 'admin@example.com', password: 'adminpassword', role: 'admin', name: 'Admin')
 user = User.create!(email: 'yojin@example.com', password: 'yojinpassword', role: 'none', name: 'Yojin')
+10.times do
+  User.create([{ name: Faker::Internet.user_name, email: Faker::Internet.free_email, password: 'password'}])
+end
+
+50.times do
+  Photo.create([{title: Faker::Superhero.name, image: File.open(Dir.glob(File.join(Rails.root,'app', 'assets', 'images', 'sampleimages', '*')).sample), user_id: User.all.sample.id }])
+end
