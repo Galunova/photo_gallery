@@ -8,13 +8,10 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      respond_to do |format|
-        format.html { redirect_to :back }
-        format.js
-      end
+      redirect_to root_path
     else
       flash[:alert] = "Check the comment form, something went wrong."
-      redirect_to :back
+      redirect_to root_path
     end
   end
 
@@ -23,10 +20,7 @@ class CommentsController < ApplicationController
     authorize! :destroy, @comment
     if @comment.user_id == current_user.id
       @comment.delete
-      respond_to do |format|
-        format.html { redirect_to :back }
-        format.js
-      end
+        redirect_to root_path
     end
   end
 
