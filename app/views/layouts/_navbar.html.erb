@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <%#= link_to 'Photo Gallery', root_path, class: 'navbar-brand' %>
+      <%= link_to 'Photo Gallery', root_path, class: 'navbar-brand' %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -10,15 +10,14 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if signed_in? %>
-          <li><%= link_to current_user.name, edit_user_registration_path %></li>
-          <li><%= link_to 'My profile', user_path(current_user) %></li>
-          <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-          <li><%= link_to "Admin", admin_root_path if current_user.role?(:admin) %></li>
+            <li><%= link_to current_user.email, edit_user_registration_path %></li>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "Admin", admin_root_path if current_user.role?(:admin) %></li>
         <% else %>
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
-          <li><%= link_to "Log in", new_user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <li><%= link_to "Log in", new_user_session_path %></li>
         <% end %>
       </ul><!-- /.login toolbar -->
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-</nav>
+</nav> 
